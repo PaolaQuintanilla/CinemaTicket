@@ -1,0 +1,25 @@
+<h1>Lista de Salas</h1>
+<a routerLink="/admin/theater/add" class="btn btn-sm btn-success mb-2">Crear Sala</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="head">Nombre</th>
+            <th class="head">Descripcion</th>
+            <th class="buttonHead"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let theater of theaters">
+            <td>{{theater.name}}</td>
+            <td>{{theater.description}}</td>
+            <td class="buttons">
+                <a routerLink="/admin/theater/edit/{{theater.id}}" class="btn btn-sm btn-primary mr-1">Asientos</a>
+            </td>
+        </tr>
+        <tr *ngIf="!theaters">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
