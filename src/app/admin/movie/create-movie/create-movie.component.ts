@@ -3,14 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-create-theater',
-  templateUrl: './create-theater.component.html',
-  styleUrls: ['./create-theater.component.css']
+  selector: 'app-create-movie',
+  templateUrl: './create-movie.component.html',
+  styleUrls: ['./create-movie.component.css']
 })
-export class CreateTheaterComponent implements OnInit {
-  
+export class CreateMovieComponent implements OnInit {
+
   form: FormGroup;
-  theater: any;
+  movie: any;
   loading = false;
   submitted = false;
 
@@ -40,7 +40,8 @@ export class CreateTheaterComponent implements OnInit {
   }
 
   create() {
-    this.theater.name = this.f.name.value;
-    this.theater.description = this.f.description.value;
+    this.movie.name = this.f.name.value;
+    this.movie.description = this.f.description.value;
   }
+
 }
