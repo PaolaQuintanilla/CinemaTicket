@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TheaterCriteria } from 'src/app/_services/cinema/models';
+import { CinemaService } from 'src/app/_services/cinema/services';
 
 @Component({
   selector: 'app-create-theater',
@@ -17,7 +19,10 @@ export class CreateTheaterComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-  ) { }
+    private cinemaService: CinemaService
+  ) { 
+    this.theater = {} as TheaterCriteria;
+  }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -42,5 +47,10 @@ export class CreateTheaterComponent implements OnInit {
   create() {
     this.theater.name = this.f.name.value;
     this.theater.description = this.f.description.value;
+    this.cinemaService.cinemaCreateTheaterPost$Json({body: this.theater})
+    .subscribe( result => {
+      this.router.navigate(['/admin/theater/list']);
+      }
+    )
   }
 }

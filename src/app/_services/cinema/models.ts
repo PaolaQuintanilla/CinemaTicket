@@ -1,0 +1,11 @@
+export { Movie } from './models/movie';
+export { TimeSpan } from './models/time-span';
+export { Projectionhour } from './models/projectionhour';
+export { Client } from './models/client';
+export { Receipt } from './models/receipt';
+export { Ticket } from './models/ticket';
+export { Seat } from './models/seat';
+export { Theater } from './models/theater';
+export { TheaterCriteria } from './models/theater-criteria';
+export { MovieCriteria } from './models/movie-criteria';
+export { WeatherForecast } from './models/weather-forecast';
