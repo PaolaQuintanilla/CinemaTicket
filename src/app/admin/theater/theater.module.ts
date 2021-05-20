@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { TheaterRoutingModule } from './theater-routing.module';
 import { CreateTheaterComponent } from './create-theater/create-theater.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TheaterListComponent } from './theater-list/theater-list.component';
 
 
 @NgModule({
   declarations: [
-    CreateTheaterComponent
+    CreateTheaterComponent,
+    TheaterListComponent
   ],
   imports: [
     CommonModule,
