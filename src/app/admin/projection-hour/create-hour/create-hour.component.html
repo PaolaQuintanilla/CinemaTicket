@@ -3,7 +3,7 @@
     <div class="form-row">
         <div class="form-group col-7">
             <label>(*) Hora</label>
-            <input type="text" formControlName="hour" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.hour.errors }" />
+            <input type="time" formControlName="hour" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.hour.errors }" />
             <div *ngIf="submitted && f.hour.errors" class="invalid-feedback">
                 <div *ngIf="f.hour.errors.required">Nombre es requerido</div>
             </div>

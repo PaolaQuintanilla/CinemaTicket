@@ -5,16 +5,13 @@
         <tr>
             <th class="head">Hora</th>
             <th class="head">Descripcion</th>
-            {% comment %} <th class="buttonHead"></th> {% endcomment %}
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let hour of hours">
-            <td>{{hour.name}}</td>
+            <td>{{hour.hour.hours}}:{{hour.hour.minutes}}</td>
             <td>{{hour.description}}</td>
-            {% comment %} <td class="buttons">
-                <a routerLink="/admin/hour/edit/{{hour.id}}" class="btn btn-sm btn-primary mr-1">Eliminar</a>
-            </td> {% endcomment %}
+
         </tr>
         <tr *ngIf="!hours">
             <td colspan="4" class="text-center">

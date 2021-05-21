@@ -11,8 +11,14 @@ import { map, filter } from 'rxjs/operators';
 
 import { Movie } from '../models/movie';
 import { MovieCriteria } from '../models/movie-criteria';
+import { Projectionhour } from '../models/projectionhour';
+import { ProjectionhourCriteria } from '../models/projectionhour-criteria';
+import { Seat } from '../models/seat';
+import { SeatCriteria } from '../models/seat-criteria';
 import { Theater } from '../models/theater';
 import { TheaterCriteria } from '../models/theater-criteria';
+import { Ticket } from '../models/ticket';
+import { TicketCriteria } from '../models/ticket-criteria';
 
 @Injectable({
   providedIn: 'root',
@@ -358,6 +364,516 @@ export class CinemaService extends BaseService {
 
     return this.cinemaCreateMoviePost$Json$Response(params).pipe(
       map((r: StrictHttpResponse<Movie>) => r.body as Movie)
+    );
+  }
+
+  /**
+   * Path part for operation cinemaGetHoursGet
+   */
+  static readonly CinemaGetHoursGetPath = '/Cinema/GetHours';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `cinemaGetHoursGet$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  cinemaGetHoursGet$Plain$Response(params?: {
+  }): Observable<StrictHttpResponse<Array<Projectionhour>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CinemaService.CinemaGetHoursGetPath, 'get');
+    if (params) {
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: 'text/plain'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<Projectionhour>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `cinemaGetHoursGet$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  cinemaGetHoursGet$Plain(params?: {
+  }): Observable<Array<Projectionhour>> {
+
+    return this.cinemaGetHoursGet$Plain$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<Projectionhour>>) => r.body as Array<Projectionhour>)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `cinemaGetHoursGet$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  cinemaGetHoursGet$Json$Response(params?: {
+  }): Observable<StrictHttpResponse<Array<Projectionhour>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CinemaService.CinemaGetHoursGetPath, 'get');
+    if (params) {
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'text/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<Projectionhour>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `cinemaGetHoursGet$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  cinemaGetHoursGet$Json(params?: {
+  }): Observable<Array<Projectionhour>> {
+
+    return this.cinemaGetHoursGet$Json$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<Projectionhour>>) => r.body as Array<Projectionhour>)
+    );
+  }
+
+  /**
+   * Path part for operation cinemaCreateHourPost
+   */
+  static readonly CinemaCreateHourPostPath = '/Cinema/CreateHour';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `cinemaCreateHourPost$Plain()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  cinemaCreateHourPost$Plain$Response(params?: {
+    body?: ProjectionhourCriteria
+  }): Observable<StrictHttpResponse<Projectionhour>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CinemaService.CinemaCreateHourPostPath, 'post');
+    if (params) {
+      rb.body(params.body, 'application/*+json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: 'text/plain'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Projectionhour>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `cinemaCreateHourPost$Plain$Response()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  cinemaCreateHourPost$Plain(params?: {
+    body?: ProjectionhourCriteria
+  }): Observable<Projectionhour> {
+
+    return this.cinemaCreateHourPost$Plain$Response(params).pipe(
+      map((r: StrictHttpResponse<Projectionhour>) => r.body as Projectionhour)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `cinemaCreateHourPost$Json()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  cinemaCreateHourPost$Json$Response(params?: {
+    body?: ProjectionhourCriteria
+  }): Observable<StrictHttpResponse<Projectionhour>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CinemaService.CinemaCreateHourPostPath, 'post');
+    if (params) {
+      rb.body(params.body, 'application/*+json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'text/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Projectionhour>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `cinemaCreateHourPost$Json$Response()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  cinemaCreateHourPost$Json(params?: {
+    body?: ProjectionhourCriteria
+  }): Observable<Projectionhour> {
+
+    return this.cinemaCreateHourPost$Json$Response(params).pipe(
+      map((r: StrictHttpResponse<Projectionhour>) => r.body as Projectionhour)
+    );
+  }
+
+  /**
+   * Path part for operation cinemaGetTicketsByGet
+   */
+  static readonly CinemaGetTicketsByGetPath = '/Cinema/GetTicketsBy';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `cinemaGetTicketsByGet$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  cinemaGetTicketsByGet$Plain$Response(params?: {
+  }): Observable<StrictHttpResponse<Array<Ticket>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CinemaService.CinemaGetTicketsByGetPath, 'get');
+    if (params) {
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: 'text/plain'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<Ticket>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `cinemaGetTicketsByGet$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  cinemaGetTicketsByGet$Plain(params?: {
+  }): Observable<Array<Ticket>> {
+
+    return this.cinemaGetTicketsByGet$Plain$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<Ticket>>) => r.body as Array<Ticket>)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `cinemaGetTicketsByGet$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  cinemaGetTicketsByGet$Json$Response(params?: {
+  }): Observable<StrictHttpResponse<Array<Ticket>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CinemaService.CinemaGetTicketsByGetPath, 'get');
+    if (params) {
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'text/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<Ticket>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `cinemaGetTicketsByGet$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  cinemaGetTicketsByGet$Json(params?: {
+  }): Observable<Array<Ticket>> {
+
+    return this.cinemaGetTicketsByGet$Json$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<Ticket>>) => r.body as Array<Ticket>)
+    );
+  }
+
+  /**
+   * Path part for operation cinemaCreateTicketPost
+   */
+  static readonly CinemaCreateTicketPostPath = '/Cinema/CreateTicket';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `cinemaCreateTicketPost$Plain()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  cinemaCreateTicketPost$Plain$Response(params?: {
+    body?: TicketCriteria
+  }): Observable<StrictHttpResponse<Ticket>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CinemaService.CinemaCreateTicketPostPath, 'post');
+    if (params) {
+      rb.body(params.body, 'application/*+json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: 'text/plain'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Ticket>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `cinemaCreateTicketPost$Plain$Response()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  cinemaCreateTicketPost$Plain(params?: {
+    body?: TicketCriteria
+  }): Observable<Ticket> {
+
+    return this.cinemaCreateTicketPost$Plain$Response(params).pipe(
+      map((r: StrictHttpResponse<Ticket>) => r.body as Ticket)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `cinemaCreateTicketPost$Json()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  cinemaCreateTicketPost$Json$Response(params?: {
+    body?: TicketCriteria
+  }): Observable<StrictHttpResponse<Ticket>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CinemaService.CinemaCreateTicketPostPath, 'post');
+    if (params) {
+      rb.body(params.body, 'application/*+json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'text/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Ticket>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `cinemaCreateTicketPost$Json$Response()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  cinemaCreateTicketPost$Json(params?: {
+    body?: TicketCriteria
+  }): Observable<Ticket> {
+
+    return this.cinemaCreateTicketPost$Json$Response(params).pipe(
+      map((r: StrictHttpResponse<Ticket>) => r.body as Ticket)
+    );
+  }
+
+  /**
+   * Path part for operation cinemaGetSeatsByIdGet
+   */
+  static readonly CinemaGetSeatsByIdGetPath = '/Cinema/GetSeatsBy/{id}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `cinemaGetSeatsByIdGet$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  cinemaGetSeatsByIdGet$Plain$Response(params: {
+    id: number;
+  }): Observable<StrictHttpResponse<Array<Seat>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CinemaService.CinemaGetSeatsByIdGetPath, 'get');
+    if (params) {
+      rb.path('id', params.id, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: 'text/plain'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<Seat>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `cinemaGetSeatsByIdGet$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  cinemaGetSeatsByIdGet$Plain(params: {
+    id: number;
+  }): Observable<Array<Seat>> {
+
+    return this.cinemaGetSeatsByIdGet$Plain$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<Seat>>) => r.body as Array<Seat>)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `cinemaGetSeatsByIdGet$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  cinemaGetSeatsByIdGet$Json$Response(params: {
+    id: number;
+  }): Observable<StrictHttpResponse<Array<Seat>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CinemaService.CinemaGetSeatsByIdGetPath, 'get');
+    if (params) {
+      rb.path('id', params.id, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'text/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<Seat>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `cinemaGetSeatsByIdGet$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  cinemaGetSeatsByIdGet$Json(params: {
+    id: number;
+  }): Observable<Array<Seat>> {
+
+    return this.cinemaGetSeatsByIdGet$Json$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<Seat>>) => r.body as Array<Seat>)
+    );
+  }
+
+  /**
+   * Path part for operation cinemaCreateSeatPost
+   */
+  static readonly CinemaCreateSeatPostPath = '/Cinema/CreateSeat';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `cinemaCreateSeatPost$Plain()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  cinemaCreateSeatPost$Plain$Response(params?: {
+    body?: SeatCriteria
+  }): Observable<StrictHttpResponse<Seat>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CinemaService.CinemaCreateSeatPostPath, 'post');
+    if (params) {
+      rb.body(params.body, 'application/*+json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: 'text/plain'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Seat>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `cinemaCreateSeatPost$Plain$Response()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  cinemaCreateSeatPost$Plain(params?: {
+    body?: SeatCriteria
+  }): Observable<Seat> {
+
+    return this.cinemaCreateSeatPost$Plain$Response(params).pipe(
+      map((r: StrictHttpResponse<Seat>) => r.body as Seat)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `cinemaCreateSeatPost$Json()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  cinemaCreateSeatPost$Json$Response(params?: {
+    body?: SeatCriteria
+  }): Observable<StrictHttpResponse<Seat>> {
+
+    const rb = new RequestBuilder(this.rootUrl, CinemaService.CinemaCreateSeatPostPath, 'post');
+    if (params) {
+      rb.body(params.body, 'application/*+json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'text/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Seat>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `cinemaCreateSeatPost$Json$Response()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  cinemaCreateSeatPost$Json(params?: {
+    body?: SeatCriteria
+  }): Observable<Seat> {
+
+    return this.cinemaCreateSeatPost$Json$Response(params).pipe(
+      map((r: StrictHttpResponse<Seat>) => r.body as Seat)
     );
   }
 

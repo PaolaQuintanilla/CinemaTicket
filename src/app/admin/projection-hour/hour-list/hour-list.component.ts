@@ -12,7 +12,7 @@ export class HourListComponent implements OnInit {
   constructor(private cinemaService: CinemaService) { }
 
   ngOnInit(): void {
-    this.cinemaService.cinemaGetMoviesGet$Json()
+    this.cinemaService.cinemaGetHoursGet$Json()
     .subscribe(result => {
       this.hours = result;
     })

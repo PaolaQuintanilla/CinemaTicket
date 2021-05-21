@@ -4,11 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 const theaterModule = () => import('./theater/theater.module').then(x => x.TheaterModule);
 const movieModule = () => import('./movie/movie.module').then(x => x.MovieModule);
 const hourModule = () => import('./projection-hour/projection-hour.module').then(x => x.ProjectionHourModule);
+const ticketModule = () => import('./ticket/ticket.module').then(x => x.TicketModule);
 
 const routes: Routes = [
   { path: 'theater', loadChildren: theaterModule },
   { path: 'movie', loadChildren: movieModule },
   { path: 'hour', loadChildren: hourModule },
+  { path: 'ticket', loadChildren: ticketModule },
 
 ];
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TheaterCriteria } from 'src/app/_services/cinema/models';
+import { SeatCriteria, TheaterCriteria } from 'src/app/_services/cinema/models';
 import { CinemaService } from 'src/app/_services/cinema/services';
 
 @Component({
@@ -28,6 +28,7 @@ export class CreateTheaterComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       description: [''],
+      seats: ['', Validators.required],
     });
   }
 
@@ -49,6 +50,17 @@ export class CreateTheaterComponent implements OnInit {
     this.theater.description = this.f.description.value;
     this.cinemaService.cinemaCreateTheaterPost$Json({body: this.theater})
     .subscribe( result => {
+      let seat = {} as SeatCriteria;
+      seat.name = this.theater.name;
+      seat.description = this.theater.description;
+      seat.theaterId = result.id;
+      for (let index = 0; index < this.f.seats.value; index++) {
+        seat.number = index+1;
+        this.cinemaService.cinemaCreateSeatPost$Json({body: seat})
+        .subscribe(result => {
+          console.log(result)
+        })
+      }
       this.router.navigate(['/admin/theater/list']);
       }
     )

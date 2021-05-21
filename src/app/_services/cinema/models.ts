@@ -8,4 +8,7 @@ export { Seat } from './models/seat';
 export { Theater } from './models/theater';
 export { TheaterCriteria } from './models/theater-criteria';
 export { MovieCriteria } from './models/movie-criteria';
+export { ProjectionhourCriteria } from './models/projectionhour-criteria';
+export { TicketCriteria } from './models/ticket-criteria';
+export { SeatCriteria } from './models/seat-criteria';
 export { WeatherForecast } from './models/weather-forecast';

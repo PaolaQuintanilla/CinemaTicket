@@ -1,0 +1,43 @@
+<h1>Crear Tickets</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col-7">
+            <label>(*) Sala</label>
+            <select class="form-control" formControlName="theaterId" [ngClass]="{ 'is-invalid': submitted && f.theaterId.errors }">
+                <option *ngFor="let t of theaters" [ngValue]="t.id">{{t.name}}</option>
+            </select>
+            <div *ngIf="submitted && f.theaterId.errors" class="invalid-feedback">
+                <div *ngIf="f.theaterId.errors.required">Sala es requerido</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-7">
+            <label>(*) Hora de Proyeccion</label>
+            <select class="form-control" formControlName="hourId" [ngClass]="{ 'is-invalid': submitted && f.hourId.errors }">
+                <option *ngFor="let h of hours" [ngValue]="h.id">{{h.hour.hours}}</option>
+            </select>
+            <div *ngIf="submitted && f.hourId.errors" class="invalid-feedback">
+                <div *ngIf="f.hourId.errors.required">Hora es requerido</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-7">
+            <label>(*) Pelicula</label>
+            <select class="form-control" formControlName="movieId" [ngClass]="{ 'is-invalid': submitted && f.movieId.errors }">
+                <option *ngFor="let m of movies" [ngValue]="m.id">{{m.name}}</option>
+            </select>
+            <div *ngIf="submitted && f.movieId.errors" class="invalid-feedback">
+                <div *ngIf="f.movieId.errors.required">Hora es requerido</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Save
+        </button>
+        <a routerLink="/admin/ticket/list" class="btn btn-link">Cancel</a>
+    </div>
+</form>
