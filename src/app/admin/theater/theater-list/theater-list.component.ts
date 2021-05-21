@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CinemaService } from 'src/app/_services/cinema/services';
 
 @Component({
   selector: 'app-theater-list',
@@ -10,11 +11,14 @@ export class TheaterListComponent implements OnInit {
 
   theaters: any[];
 
-  constructor() { 
-    this.theaters = [{name: "test", description:"test"}, {name: "test", description:"test"}] ;
+  constructor(private cinemaService: CinemaService) { 
   }
 
   ngOnInit(): void {
+    this.cinemaService.cinemaGetTheatersGet$Json()
+    .subscribe(result => {
+      this.theaters = result;
+    })
   }
 
 }
