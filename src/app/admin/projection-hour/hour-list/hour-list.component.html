@@ -1,0 +1,25 @@
+<h1>Lista de Horas de Proyeccion</h1>
+<a routerLink="/admin/hour/add" class="btn btn-sm btn-success mb-2">Crear Hora de Proyeccion</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="head">Hora</th>
+            <th class="head">Descripcion</th>
+            {% comment %} <th class="buttonHead"></th> {% endcomment %}
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let hour of hours">
+            <td>{{hour.name}}</td>
+            <td>{{hour.description}}</td>
+            {% comment %} <td class="buttons">
+                <a routerLink="/admin/hour/edit/{{hour.id}}" class="btn btn-sm btn-primary mr-1">Eliminar</a>
+            </td> {% endcomment %}
+        </tr>
+        <tr *ngIf="!hours">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
