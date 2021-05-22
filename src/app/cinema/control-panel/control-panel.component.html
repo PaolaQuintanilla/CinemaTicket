@@ -1,0 +1,22 @@
+<h1>Cartelera</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="head">Pelicula</th>
+            <th class="buttonHead"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let movie of movies">
+            <td>{{movie.movie.name}}</td>
+            <td class="buttons">
+                <a routerLink="/admin/movie/edit/{{movie.id}}" class="btn btn-sm btn-primary mr-1">Detalle</a>
+            </td>
+        </tr>
+        <tr *ngIf="!movies">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

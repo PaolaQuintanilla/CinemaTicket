@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+import { Projection } from './projection';
 import { Seat } from './seat';
 export interface Theater {
   createdAt?: string;
@@ -8,5 +9,6 @@ export interface Theater {
   id?: number;
   isActive?: number;
   name: string;
+  projection?: null | Array<Projection>;
   seat?: null | Array<Seat>;
 }

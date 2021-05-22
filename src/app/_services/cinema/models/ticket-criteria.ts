@@ -1,7 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 export interface TicketCriteria {
-  movieId?: number;
-  projectionHourId?: number;
+  projectionId?: number;
   seatId?: number;
 }

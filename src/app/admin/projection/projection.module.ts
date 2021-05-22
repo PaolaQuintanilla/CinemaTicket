@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminRoutingModule } from './admin-routing.module';
+
+import { ProjectionRoutingModule } from './projection-routing.module';
+import { ProjectionComponent } from './projection.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ProjectionComponent } from './projection/projection.component';
+
 
 @NgModule({
   declarations: [
-    
+    ProjectionComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule,
+    ProjectionRoutingModule,
     ReactiveFormsModule
   ]
 })
-export class AdminModule { }
+export class ProjectionModule { }

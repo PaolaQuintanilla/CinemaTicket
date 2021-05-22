@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TicketCriteria } from 'src/app/_services/cinema/models';
+import { ProjectionCriteria } from 'src/app/_services/cinema/models';
 import { CinemaService } from 'src/app/_services/cinema/services';
 
 @Component({
-  selector: 'app-create-ticket',
-  templateUrl: './create-ticket.component.html',
-  styleUrls: ['./create-ticket.component.css']
+  selector: 'app-projection',
+  templateUrl: './projection.component.html',
+  styleUrls: ['./projection.component.css']
 })
-export class CreateTicketComponent implements OnInit {
-
+export class ProjectionComponent implements OnInit {
   form: FormGroup;
-  ticket: any;
+  projection: any;
   loading = false;
   submitted = false;
   movies: any;
@@ -24,7 +23,7 @@ export class CreateTicketComponent implements OnInit {
     private formBuilder: FormBuilder,
     private cinemaService: CinemaService
   ) { 
-    this.ticket = {} as TicketCriteria;
+    this.projection = {} as ProjectionCriteria;
   }
 
   ngOnInit(): void {
@@ -65,18 +64,13 @@ export class CreateTicketComponent implements OnInit {
   }
 
   create() {
-    this.ticket.movieId = this.f.movieId.value;
-    this.ticket.projectionHourId = this.f.hourId.value;
-    this.cinemaService.cinemaGetSeatsByIdGet$Json({id: this.f.theaterId.value})
+    this.projection.movieId = this.f.movieId.value;
+    this.projection.projectionHourId = this.f.hourId.value;
+    this.projection.theaterId = this.f.theaterId.value;
+    this.cinemaService.cinemaCreateProjectionPost$Json({body: this.projection})
     .subscribe(result => {
-      for (let index = 0; index < result.length; index++) {
-        this.ticket.seatId = result[index].id;
-        this.cinemaService.cinemaCreateTicketPost$Json({body: this.ticket})
-        .subscribe( result => {
-          this.router.navigate(['/admin/movie/list']);
-          }
-        )
-      }
+      this.router.navigate(['/admin/movie/list']);
     })
   }
+
 }

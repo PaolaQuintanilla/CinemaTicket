@@ -1,14 +1,16 @@
 export { Movie } from './models/movie';
 export { TimeSpan } from './models/time-span';
 export { Projectionhour } from './models/projectionhour';
+export { Seat } from './models/seat';
 export { Client } from './models/client';
 export { Receipt } from './models/receipt';
 export { Ticket } from './models/ticket';
-export { Seat } from './models/seat';
+export { Projection } from './models/projection';
 export { Theater } from './models/theater';
 export { TheaterCriteria } from './models/theater-criteria';
 export { MovieCriteria } from './models/movie-criteria';
 export { ProjectionhourCriteria } from './models/projectionhour-criteria';
+export { ProjectionCriteria } from './models/projection-criteria';
 export { TicketCriteria } from './models/ticket-criteria';
 export { SeatCriteria } from './models/seat-criteria';
 export { WeatherForecast } from './models/weather-forecast';

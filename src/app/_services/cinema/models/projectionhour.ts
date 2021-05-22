@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-import { Ticket } from './ticket';
+import { Projection } from './projection';
 import { TimeSpan } from './time-span';
 export interface Projectionhour {
   createdAt?: string;
@@ -9,5 +9,5 @@ export interface Projectionhour {
   hour?: TimeSpan;
   id?: number;
   isActive?: number;
-  ticket?: null | Array<Ticket>;
+  projection?: null | Array<Projection>;
 }

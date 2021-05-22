@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-const controlPanelModule = () => import('./control-panel/control-panel.module').then(x => x.ControlPanelModule);
+import { ControlPanelComponent } from './control-panel.component';
 
 const routes: Routes = [
-  { path: 'controlPanel', loadChildren: controlPanelModule },
+  { path: 'list', component: ControlPanelComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CinemaRoutingModule { }
+export class ControlPanelRoutingModule { }

@@ -5,12 +5,14 @@ const theaterModule = () => import('./theater/theater.module').then(x => x.Theat
 const movieModule = () => import('./movie/movie.module').then(x => x.MovieModule);
 const hourModule = () => import('./projection-hour/projection-hour.module').then(x => x.ProjectionHourModule);
 const ticketModule = () => import('./ticket/ticket.module').then(x => x.TicketModule);
+const projectionModule = () => import('./projection/projection.module').then(x => x.ProjectionModule);
 
 const routes: Routes = [
   { path: 'theater', loadChildren: theaterModule },
   { path: 'movie', loadChildren: movieModule },
   { path: 'hour', loadChildren: hourModule },
   { path: 'ticket', loadChildren: ticketModule },
+  { path: 'projection', loadChildren: projectionModule },
 
 ];
 

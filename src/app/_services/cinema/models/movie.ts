@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-import { Ticket } from './ticket';
+import { Projection } from './projection';
 export interface Movie {
   createdAt?: string;
   createdBy?: number;
@@ -9,5 +9,5 @@ export interface Movie {
   id?: number;
   isActive?: number;
   name: string;
-  ticket?: null | Array<Ticket>;
+  projection?: null | Array<Projection>;
 }
