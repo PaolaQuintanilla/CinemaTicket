@@ -1,0 +1,34 @@
+<div>
+  <h2>Details</h2>
+  <div>
+    <label>Pelicula:</label>   {{projection.movie.name| uppercase }}
+    <label>Hora:</label>    {{projection.projectionHour.hour}}
+    <label>Sala:</label>    {{projection.theater.name}}
+    <h1>Lista de Asientos</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="head">Numero</th>
+                <th class="head">Disponible</th>
+                <th class="buttonHead"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ticket of tickets">
+                <td>{{ticket.seat.number}}</td>
+                <td *ngIf="!ticket.seat.sold" >disponible</td>
+                <td *ngIf="ticket.seat.sold">Vendido</td>
+                <td class="buttons">
+                    <a routerLink="/cinema/receipt/add/{{ticket.id}}" class="btn btn-sm btn-primary mr-1" [class.disabled]="ticket.seat.sold">Comprar</a>
+                </td>
+            </tr>
+            <tr *ngIf="!tickets">
+                <td colspan="4" class="text-center">
+                    <span class="spinner-border spinner-border-lg align-center"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>    
+  </div>
+ 
+</div>

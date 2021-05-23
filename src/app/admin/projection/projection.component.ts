@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProjectionCriteria } from 'src/app/_services/cinema/models';
+import { ProjectionCriteria, TicketCriteria } from 'src/app/_services/cinema/models';
 import { CinemaService } from 'src/app/_services/cinema/services';
 
 @Component({
@@ -68,8 +68,20 @@ export class ProjectionComponent implements OnInit {
     this.projection.projectionHourId = this.f.hourId.value;
     this.projection.theaterId = this.f.theaterId.value;
     this.cinemaService.cinemaCreateProjectionPost$Json({body: this.projection})
-    .subscribe(result => {
+    .subscribe( x => {
       this.router.navigate(['/admin/movie/list']);
+      this.cinemaService.cinemaGetSeatsByIdGet$Json({id: this.projection.theaterId})
+      .subscribe( result => {
+        let ticket = {} as TicketCriteria;
+        ticket.projectionId = x.id;
+        for (let index = 0; index < result.length; index++) {
+          ticket.seatId = result[index].id;
+          this.cinemaService.cinemaCreateTicketPost$Json({body: ticket})
+          .subscribe( result => {
+            console.log(result)
+          })
+        }
+      })
     })
   }
 

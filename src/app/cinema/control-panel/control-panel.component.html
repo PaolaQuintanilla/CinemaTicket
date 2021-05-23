@@ -10,7 +10,7 @@
         <tr *ngFor="let movie of movies">
             <td>{{movie.movie.name}}</td>
             <td class="buttons">
-                <a routerLink="/admin/movie/edit/{{movie.id}}" class="btn btn-sm btn-primary mr-1">Detalle</a>
+                <a routerLink="/cinema/movieDetail/detail/{{movie.id}}" class="btn btn-sm btn-primary mr-1">Detalle</a>
             </td>
         </tr>
         <tr *ngIf="!movies">

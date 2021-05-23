@@ -15,7 +15,7 @@
         <div class="form-group col-7">
             <label>(*) Hora de Proyeccion</label>
             <select class="form-control" formControlName="hourId" [ngClass]="{ 'is-invalid': submitted && f.hourId.errors }">
-                <option *ngFor="let h of hours" [ngValue]="h.id">{{h.hour.hours}}</option>
+                <option *ngFor="let h of hours" [ngValue]="h.id">{{h.hour}}</option>
             </select>
             <div *ngIf="submitted && f.hourId.errors" class="invalid-feedback">
                 <div *ngIf="f.hourId.errors.required">Hora es requerido</div>
